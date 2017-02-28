@@ -1,0 +1,10 @@
+.profileBody{
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.profileImg {
+  height: 200px;
+  border-radius: 30px;
+}

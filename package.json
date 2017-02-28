@@ -3,26 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "auth0-react-scripts": "0.6.20"
+    "auth0-react-scripts": "0.6.20",
+    "concurrently": "^3.3.0"
   },
   "dependencies": {
     "auth0-lock": "^10.11.0",
+    "aws-sdk": "^2.16.0",
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.1",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^4.0.0",
     "events": "^1.1.1",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
+    "express-session": "^1.15.1",
     "jwt-decode": "^2.1.0",
+    "massive": "^2.6.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-fetch": "0.0.9",
+    "react-fine-uploader": "^0.5.0",
     "react-router": "^3.0.2",
     "semantic-ui-react": "^0.65.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"nodemon server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:1138"
 }

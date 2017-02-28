@@ -3,6 +3,8 @@ import {EventEmitter} from 'events';
 import React, {Component, PropTypes} from 'react';
 import {browserHistory} from 'react-router';
 import Auth0Lock from 'auth0-lock';
+import config from './config';
+
 
 const NEXT_PATH_KEY = 'next_path';
 const ID_TOKEN_KEY = 'id_token';
@@ -11,13 +13,16 @@ const PROFILE_KEY = 'profile';
 const LOGIN_ROUTE = '/login';
 const ROOT_ROUTE = '/';
 
-if (!process.env.REACT_APP_AUTH0_CLIENT_ID || !process.env.REACT_APP_AUTH0_DOMAIN) {
+
+
+
+if (!config.REACT_APP_AUTH0_CLIENT_ID || !config.REACT_APP_AUTH0_DOMAIN) {
   throw new Error('Please define `REACT_APP_AUTH0_CLIENT_ID` and `REACT_APP_AUTH0_DOMAIN` in your .env file');
 }
 
 const lock = new Auth0Lock(
-  process.env.REACT_APP_AUTH0_CLIENT_ID,
-  process.env.REACT_APP_AUTH0_DOMAIN, {
+  config.REACT_APP_AUTH0_CLIENT_ID,
+  config.REACT_APP_AUTH0_DOMAIN, {
     auth: {
       redirectUrl: `${window.location.origin}${LOGIN_ROUTE}`,
       responseType: 'token'
@@ -52,7 +57,7 @@ export function logout() {
   clearNextPath();
   clearIdToken();
   clearProfile();
-  browserHistory.push(LOGIN_ROUTE);
+  browserHistory.push(ROOT_ROUTE);
 }
 
 export function requireAuth(nextState, replace) {
@@ -137,7 +142,7 @@ function subscribeToProfile(subscription) {
 
 async function updateProfile(userId, newProfile) {
   try {
-    const response = await fetchAsUser(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`, {
+    const response = await fetchAsUser(`https://${config.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`, {
       method: 'PATCH',
       body: JSON.stringify(newProfile)
     });

@@ -1,0 +1,59 @@
+.itemContainer{
+  width: 700px;
+  display: flex;
+  flex-flow: row wrap;
+  float:left;
+  border-bottom: 0px
+}
+
+.itemDiv{
+  position: relative;
+  width: 300px;
+  padding: 10px;
+  height: 300px;
+  margin: 5px;
+}
+
+.itemImg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/*.itemImg:hover{
+  opacity: .7;
+}*/
+
+.itemBasicInfo{
+  position: absolute;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.66);
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+
+}
+
+.profileItemName{
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.profileItemCatagory{
+  color: teal;
+  font-size: 15px;
+}
+
+.itemBasicInfo:hover{
+  opacity: 1;
+
+}

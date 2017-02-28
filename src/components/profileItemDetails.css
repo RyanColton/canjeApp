@@ -1,0 +1,27 @@
+.itemDetailedContainer{
+  float:left;
+  width: 700px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.itemDetailedImage{
+  width: 500px;
+}
+
+.itemDetailedInfo{
+  width: 500px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.itemDetailedButtons{
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
