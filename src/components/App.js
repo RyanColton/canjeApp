@@ -12,6 +12,7 @@ import ProfileItemDetails from './profileItemDetails'
 import PublicItemDetails from './publicItemDetails'
 import MyOffers from './myOffers'
 import MakeOffer from './makeOffer'
+import ItemByCatagory from './itemsByCategory'
 
 class App extends Component {
   render() {
@@ -20,10 +21,10 @@ class App extends Component {
         <Route component={Site}>
           <Route path="/" component={Home} />
           <Route path="/login" component={Login} />
-
+          <Route path="/category/:category" component={ItemByCatagory} />
           <Route onEnter={requireAuth}>
             {/* Place all authenticated routes here */}
-            <Route path="/profile" component={Profile} />
+            <Route path="/public/profile/:userid" component={Profile} />
             <Route path="/profile/edit" component={EditProfile} />
             <Route path="/profile/addItem" component={AddItem} />
             <Route path="/profile/myItems" component={ProfileItems} />

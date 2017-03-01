@@ -1,4 +1,4 @@
-SELECT o.*, u.*, oi.itemname AS offeritemname, oi.itemimageurl AS offeritemimage, oi.itemcatagory AS offeritemcatagory, wi.itemname AS wanteditemname, wi.itemimageurl AS wanteditemimage, wi.itemcatagory AS wanteditemcatagory FROM offers o
+SELECT o.*, u.userid, u.userimage, u.location, u.userfirstname, u.userphone, u.useremail, oi.itemname AS offeritemname, oi.itemimageurl AS offeritemimage, oi.itemcatagory AS offeritemcatagory, wi.itemname AS wanteditemname, wi.itemimageurl AS wanteditemimage, wi.itemcatagory AS wanteditemcatagory FROM offers o
 JOIN users u ON u.userid=o.userofferingid
 JOIN items oi ON o.itemofferedid=oi.itemid
 JOIN items wi ON o.itemwantedid=wi.itemid

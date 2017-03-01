@@ -1,0 +1,14 @@
+.PublicItemDetail-container{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+}
+
+.PublicItemDetail-image{
+  margin: 10px;
+  width: 400px;
+}
+
+.PublicItemDetail-info{
+ margin-top: 25px;
+}

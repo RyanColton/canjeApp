@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connectProfile} from '../auth';
-import {Link, browserHistory} from 'react-router'
+import {browserHistory} from 'react-router'
 import {Button} from 'semantic-ui-react'
 import './makeOffer.css'
 let profile
@@ -51,7 +51,7 @@ class MakeOffer extends Component{
                 <img className="itemImg" src={item.itemimageurl} id='itemImg'/>
                 <div className="itemBasicInfo" id="itemBasicInfo">
                   <p className="profileItemName">{item.itemname}</p>
-                  <Button color='teal' onClick={()=>{this.makeOffer(offerInfo).then((response)=>{browserHistory.push('/')})}}>Make Offer</Button>
+                  <Button color='teal' onClick={()=>{this.makeOffer(offerInfo).then((response)=>{browserHistory.push('/')})}} content="Offer Item" icon='checkmark'/>
                 </div>
               </div>
             )

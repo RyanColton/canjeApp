@@ -1,54 +1,79 @@
+!a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.allItemTitle{
+  padding-bottom: 25px;
+}
+
 .Home{
-width: 700px;
-float: left;
+  width: 100%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 .Home-intro {
   font-size: large;
-  max-width: 480px;
-  margin: 0px auto;
+  max-width: 100%;
   display: flex;
   align-items: center;
-  flex-flow: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .allItemContainer{
-  width: 600px;
-  border-bottom: 1px solid #dadada;
-  margin-bottom: 20px;
+  width: 300px;
   display: flex;
   align-items: center;
   flex-flow: column;
   justify-content: center;
+  margin:5px;
+  height:380px
 }
 .allItemBox{
-  background-color: #f4efef;
-  padding: 1px;
+  background-color: #f6f6f6;
+
+  /*padding: 1px;*/
 }
 
 .allItemImg{
-  width: 450px;
-  margin: 10px;
+  width: 300px;
+  height: 300px;
 }
 .allItemInfo{
-  width:500px;
-  height: 100px;
+  width:300px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   align-self: center;
-  background-color: #e8e3e3;
-  padding: 5px
+  background-color: #f6f6f6;
+  padding: 10px
 }
+.allItemText{
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100px
 
+}
 .allItemName{
   font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width:100px;
 
 }
 
 .separator{
   border-bottom: 1px solid #dadada;
-  width: 100%;
+  width: 80px;
 
 }
 
@@ -56,4 +81,5 @@ float: left;
   font-size: 15px;
   color: teal;
   padding-top: 5px
+
 }

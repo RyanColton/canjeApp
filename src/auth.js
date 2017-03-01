@@ -11,7 +11,7 @@ const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 const PROFILE_KEY = 'profile';
 const LOGIN_ROUTE = '/login';
-const ROOT_ROUTE = '/';
+const ROOT_ROUTE = '/profile/edit';
 
 
 

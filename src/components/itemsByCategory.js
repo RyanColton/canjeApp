@@ -4,11 +4,11 @@ import {Image, Button} from 'semantic-ui-react'
 import {Link, browserHistory} from 'react-router'
 import './Home.css';
 
-const getItems = function(){
-  return fetch('/api/items', {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
+const getItems = function(param){
+  return fetch(`/api/items?category=${param}`, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
 }
 /* <p className="itemCatagory">{item.itemcatagory}</p> */
-class Home extends Component {
+class ItemByCatagory extends Component {
   static propTypes = {
     ...connectProfile.PropTypes
   };
@@ -20,15 +20,16 @@ class Home extends Component {
      }
     }
   componentDidMount(){
-      getItems().then((response) => {
+      getItems(this.props.params.category).then((response) => {
         this.setState({items: response})
+        console.log(this.state.items)
       })
   }
 
   render() {
     return (
       <div className="Home">
-        <div className="allItemTitle"><h1>All</h1></div>
+        <div  className="allItemTitle"><h1>{this.props.params.category}</h1></div>
         <div className="Home-intro">
           {this.state.items.map ((item, index) => {
                 let url = `/public/itemDetails/profile/${item.userid}/item/${item.itemid}`
@@ -57,4 +58,4 @@ class Home extends Component {
 
 }
 
-export default connectProfile(Home);
+export default connectProfile(ItemByCatagory);

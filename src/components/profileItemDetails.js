@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connectProfile} from '../auth';
-import {Link} from 'react-router'
-import {Button, Popup} from 'semantic-ui-react';
+import {browserHistory} from 'react-router'
+import {Button, Popup, Icon} from 'semantic-ui-react';
 import "./profileItemDetails.css"
 
 let avalibility
@@ -37,7 +37,7 @@ class ProfileItemDetails extends Component {
   }
   markAsUnavalible(param, setState) {
     fetch(`/api/profile/toggleItemAvalibility?itemid=${param}`, {method: 'put'})
-    setState({isAvailable: !this.state.isAvailable})
+    this.setState({isAvailable: !this.state.isAvailable})
     console.log(this.state.isAvailable)
     return
   }
@@ -56,10 +56,11 @@ class ProfileItemDetails extends Component {
         <br/>
         <br/>
         <div className="itemDetailedButtons">
-          <Button color='teal' size="large" icon='checkmark' labelPosition='right' onClick={()=>{this.markAsUnavalible(item.itemid, this.setState)}}>{this.state.isAvailable ? 'Mark as Sold' : 'Mark as Available'}</Button>
+
+          <Button color='teal' size="large" icon='check circle' labelPosition='right' onClick={()=>{this.markAsUnavalible(item.itemid, this.setState)}} content={this.state.isAvailable ? 'Mark as Sold' : 'Mark as Available'} />
           <Popup
             trigger={<Button color='teal' size="large" icon='delete' labelPosition='right' content='Delete' />}
-            content={<Button color='red' size='large' onClick={()=>{deleteItem(item.itemid)}}><Link to='/profile/myItems'>Confirm Deletion</Link></Button>}
+            content={<Button color='red' size='large' onClick={()=>{deleteItem(item.itemid).then(()=>browserHistory.push('/profile/myItems'))}}>Confirm Deletion</Button>}
             on='click'
             />
         </div>

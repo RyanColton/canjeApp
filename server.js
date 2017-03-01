@@ -72,6 +72,16 @@ app.post('/api/offers', controller.addOffer)
 
 app.get('/api/offers', controller.getOffers)
 
+app.get('/api/profile/check', controller.profileExsists)
+
+app.post('/api/profile/new', controller.newUser);
+
+app.put('/api/profile/update', controller.updateUser)
+
+app.delete('/api/offers/delete', controller.removeOffer)
+
+app.get('/api/users', controller.getUser)
+
 
 app.listen('1138', function(){
   console.log("Successfully listening on : 1138")

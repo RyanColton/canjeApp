@@ -16,6 +16,12 @@ module.exports = {
         res.status(200).send(items)
       })
     }
+    else if(req.query.category){
+      db.get_category_items([req.query.category], function(err, items){
+        console.log(err)
+        res.status(200).send(items)
+      })
+    }
 
     else {db.get_items(function(err, items){
       console.log(err)
@@ -47,9 +53,38 @@ module.exports = {
    })
  },
  getOffers: (req, res, next) => {
+
    db.get_offers([req.query.userid], (err, offers) => {
      res.status(200).send(offers)
    })
+ },
+ profileExsists: (req, res, next) => {
+   db.profile_exsists([req.query.userid], (err, response)=>{
+     res.status(200).send(response)
+   })
+ },
+ newUser: (req, res, next)=>{
+   db.add_profile([req.body.userid, req.body.userImage, req.body.thumbnail, req.body.userFirstName, req.body.useremail, req.body.userphone, req.body.location, req.body.personalbio, req.body.itemswanted, req.body.username, req.body.userLastName], (err, profile)=>{
+     console.log(err)
+     res.status(200).send('User Added')
+   })
+ },
+ updateUser: (req, res, next)=>{
+   db.update_profile([req.body.userid, req.body.userImage, req.body.thumbnail, req.body.userFirstName, req.body.useremail, req.body.userphone, req.body.location, req.body.personalbio, req.body.itemswanted, req.body.username, req.body.userLastName], (err, profile)=>{
+     console.log(err)
+     res.status(200).send('User Updated')
+   })
+ },
+ removeOffer: (req, res, next)=>{
+   db.remove_offer([req.query.offerid], (err, response)=>{
+     console.log(err)
+     res.status(200).send('Offer Removed')
+   })
+ },
+ getUser: (req, res, next)=>{
+   db.get_user([req.query.userid], (err, user)=>{
+     console.log(err)
+     res.status(200).send(user)
+   })
  }
-
 }

@@ -1,5 +1,5 @@
 .itemContainer{
-  width: 700px;
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   float:left;

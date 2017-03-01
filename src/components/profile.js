@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {button} from 'semantic-ui-react';
+import {Image, Label, Divider} from 'semantic-ui-react';
+import {browserHistory} from 'react-router'
 import {connectProfile} from '../auth';
 import './profile.css';
 
@@ -8,27 +9,63 @@ class Profile extends Component {
     ...connectProfile.PropTypes
   };
 
+  getUser = () => {
+    return fetch(`/api/users?userid=${this.props.params.userid}`, {method: 'get'}).then((r)=>r.json())
+  }
+
+  constructor(){
+    super()
+    this.state ={
+      user: {}
+    }
+    this.getUser = this.getUser.bind(this)
+  }
+
   render() {
-    const {profile} = this.props;
-    const user_metadata = profile.user_metadata || {};
-
-    console.log(profile)
     return (
-      <div className="profileBody">
-      <img className="profileImg" src={profile.picture_large}/>
-      <h1>{profile.name}</h1>
-      <div className="profileInfo">
-        <p><strong>Username:</strong> {user_metadata.username || 'None'}</p>
-        <p><strong>Location:</strong> {user_metadata.location || 'Private'}</p>
-        <p><strong>Email:</strong> {user_metadata.email || 'private'}</p>
-        <p><strong>Phone:</strong> {user_metadata.phone || 'private'}</p>
-        <p><strong>Personal Bio:</strong> {user_metadata.personalBio || 'private'}</p>
-      </div>
-
-
-
+      <div className="Profile-UserBody">
+        <Image shape="rounded" className="Profile-UserImg" src={this.state.user.userimage}/>
+        <div className="Profile-UserInfo">
+            <div className="Profile-UserHeading">{this.state.user.userfirstname + " " + this.state.user.userlastname}</div>
+            <Divider />
+            <div className="Profile-InfoData">
+                <div className="Profile-InfoSet">
+                  <Label content='Username' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.username || 'None'}</p>
+                </div>
+              <Divider />
+                <div className="Profile-InfoSet">
+                  <Label content='Location' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.location || 'Private'}</p>
+                </div>
+              <Divider />
+                <div className="Profile-InfoSet">
+                  <Label content='Email' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.useremail || 'private'}</p>
+                </div>
+              <Divider />
+                <div className="Profile-InfoSet">
+                  <Label content='Phone' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.userphone || 'private'}</p>
+                </div>
+              <Divider />
+                <div className="Profile-InfoSet">
+                  <Label content='Items Wanted' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.itemswanted || 'private'}</p>
+                </div>
+              <Divider />
+                <div className="Profile-InfoSet">
+                  <Label content='Bio' size='big' />
+                  <p className="Profile-InfoValue">{this.state.user.personalbio || 'private'}</p>
+                </div>
+            </div>
+        </div>
       </div>
     )
+  }
+
+  componentDidMount(){
+    this.getUser().then((r)=>this.setState({user: r[0]}))
   }
 }
 export default connectProfile(Profile);

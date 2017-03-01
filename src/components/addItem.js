@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {hashHistory, browserHistory} from 'react-router'
-import {Button, Dropdown} from 'semantic-ui-react';
+import {Button, Dropdown, Divider, Input, Label, TextArea} from 'semantic-ui-react';
 import {connectProfile} from '../auth';
 import FineUploaderS3 from 'fine-uploader-wrappers/s3'
 import Gallery from 'react-fine-uploader'
@@ -73,7 +73,7 @@ class addItem extends Component {
           },
           {
             key: 'Living Room',
-            value:'Living Room',
+            value:'LivingRoom',
             flag: 'Living Room',
             text: 'Living Room'
           },
@@ -107,52 +107,63 @@ class addItem extends Component {
   render() {
     return (
       <div className="addItemContainer">
-        <div className="EditProfile-heading">Add a New Item</div>
-        <form className="EditProfile-form" onSubmit={this.onSubmit} onChange={this.onClearSaved}>
-          <fieldset className="EditProfile-fieldset" disabled={this.state.saving}>
-            <label className="EditProfile-locationLabel" htmlFor="Name"><strong>Image</strong></label>
-            <br/>
+        <div className="AddItem-heading">Add a New Item</div>
+        <Divider />
+        <div className="AddItem-inputContainer">
+          <div className="AddItem-imageInput">
+            <Label className="EditProfile-locationLabel" htmlFor="Name" content="Image" size='big'/>
             <Gallery uploader={uploader} />
-            <label className="EditProfile-locationLabel" htmlFor="Name"><strong>Name</strong></label>
-            <input
-              ref={(ref) => this.nameInput = ref}
-              className="EditProfile-locationInput"
-              id="name"
-              type="text"
-              placeholder="Name of Product"
-              defaultValue={this.state.item.name}
-            />
-          <label className="EditProfile-locationLabel" htmlFor="Category"><strong>Catagory</strong></label>
-          <br/>
-            <Dropdown
-              ref={(ref) => this.catagoryInput = ref}
-              onChange={(event, value)=>{this.recordSelection(value.value)}}
-              options={this.state.catagories}
-              id="catagory"
-              placeholder="Select a Catagory"
-              defaultValue={this.state.item.catagory}
-            />
-          <br />
-          <br/>
-            <label className="EditProfile-locationLabel" htmlFor="description"><strong>Description</strong></label>
-             <textarea
-               ref={(ref) => this.descriptionInput = ref}
-               className="EditProfile-personalBioInput"
-               id="Description"
-               type="text"
-               placeholder="Description of the item."
-               defaultValue={this.state.item.description}
-             />
-            <div className="EditProfile-formControls">
-              <Button color='teal' className="EditProfile-submitButton" type="submit">
-                {this.state.saving ? 'Adding' : 'Add Item'}
-              </Button>
-              {this.state.saved && (
-                <div className="EditProfile-saved">Item Uploaded</div>
-              )}
-            </div>
-          </fieldset>
-        </form>
+          </div>
+          <div className="AddItem-DataInput">
+            <form className="EditProfile-form" onSubmit={this.onSubmit} onChange={this.onClearSaved}>
+              <fieldset className="EditProfile-fieldset" disabled={this.state.saving}>
+                <div>
+                  <div className="AddItem-textFieldInput">
+                    <Label className="EditProfile-locationLabel" htmlFor="Name" content="Name" size='big'/>
+                    <Input
+                      onChange={(e)=>this.nameInput = e.target.value}
+                      id="name"
+                      type="text"
+                      placeholder="Name of Product"
+                      defaultValue={this.state.item.name}
+                    />
+                  </div>
+                    <Divider />
+                  <div className="AddItem-textFieldInput">
+                    <Label className="EditProfile-locationLabel" htmlFor="Category" content="Category" size='big' />
+                    <Dropdown
+                      ref={(ref) => this.catagoryInput = ref}
+                      onChange={(event, value)=>{this.recordSelection(value.value)}}
+                      options={this.state.catagories}
+                      id="catagory"
+                      placeholder="Select a Category"
+                      defaultValue={this.state.item.catagory}
+                      selection
+                    />
+                </div>
+                </div>
+                <Divider />
+                <Label className="EditProfile-locationLabel" htmlFor="description" content="Description" size='big' />
+                 <TextArea
+                   onChange={(e)=>this.descriptionInput = e.target.value}
+                   className="EditProfile-PersonalBioInput"
+                   id="Description"
+                   type="text"
+                   placeholder="Description of the item."
+                   defaultValue={this.state.item.description}
+                 />
+                <div className="EditProfile-formControls">
+                  <Button color='teal' className="EditProfile-submitButton" type="submit">
+                    {this.state.saving ? 'Adding' : 'Add Item'}
+                  </Button>
+                  {this.state.saved && (
+                    <div className="EditProfile-saved">Item Uploaded</div>
+                  )}
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
 
     )
@@ -161,7 +172,7 @@ class addItem extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     let item = this.state.item
-    item.name = this.nameInput.value
+    item.name = this.nameInput
     item.category = this.state.selectedCatagory
     item.description = this.descriptionInput.value
     this.setState({
