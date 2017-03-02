@@ -40,8 +40,10 @@ class Home extends Component {
     const filteredItems = this.state.items.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
       <div className="Home">
-        <div className="allItemTitle"><h1>All</h1></div>
-        <SearchInput className="search-input" onChange={this.searchUpdated} />
+        <div className="Home-TitleContainer">
+          <div  className="allItemTitle"><h1>All</h1></div>
+           <SearchInput className="search-input" onChange={this.searchUpdated} />
+         </div>
         <div className="Home-intro">
           {filteredItems.map ((item, index) => {
                 let url = `/public/itemDetails/profile/${item.userid}/item/${item.itemid}`
