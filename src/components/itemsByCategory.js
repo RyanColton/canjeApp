@@ -4,10 +4,10 @@ import {Image, Button} from 'semantic-ui-react'
 import {Link, browserHistory} from 'react-router'
 import SearchInput, {createFilter} from 'react-search-input'
 import './Home.css';
-
-const getItems = function(param){
-  return fetch(`/api/items?category=${param}`, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
-}
+//
+// const getItems = function(param){
+//   return fetch(`/api/items?category=${param}`, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
+// }
 const KEYS_TO_FILTERS = ['itemname', 'itemdescription']
 /* <p className="itemCatagory">{item.itemcatagory}</p> */
 class ItemByCatagory extends Component {
@@ -24,13 +24,17 @@ class ItemByCatagory extends Component {
       }],
       searchTerm: ''
     }
-      this.searchUpdated = this.searchUpdated.bind(this)
+    this.getItems = this.getItems.bind(this)
+    this.searchUpdated = this.searchUpdated.bind(this)
     }
   searchUpdated(term) {
       this.setState({searchTerm: term})
   }
+  getItems = (param) => {
+    return fetch(`/api/items?category=${param}`, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
+  }
   componentDidMount(){
-      getItems(this.props.params.category).then((response) => {
+      this.getItems(this.props.params.category).then((response) => {
         this.setState({items: response})
         console.log(this.state.items)
       })
@@ -41,7 +45,7 @@ class ItemByCatagory extends Component {
     return (
       <div className="Home">
          <div className="Home-TitleContainer">
-           <div  className="allItemTitle"><h1>{this.props.params.category}</h1></div>
+           <div className="EditProfile-heading">{this.props.params.category}</div>
             <SearchInput className="search-input" onChange={this.searchUpdated} />
           </div>
           <div className="Home-intro">

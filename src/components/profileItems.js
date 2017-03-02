@@ -37,8 +37,8 @@ class ProfileItems extends Component {
 
   render(){
     return(
-      <div>
-      <h1>My Items</h1>
+      <div className="ProfileItems-PageContainer">
+      <div className="EditProfile-heading">My Items</div>
         <div className="itemContainer">
           {profileItems.map ((item, index) => {
               let url = `/profile/myItems/${item.itemid}`

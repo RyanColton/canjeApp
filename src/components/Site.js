@@ -4,10 +4,6 @@ import {connectProfile, logout, login} from '../auth';
 import {Menu, Button, Dropdown} from 'semantic-ui-react'
 import './Site.css';
 
-{/* <Menu.Item name='View Profile' active={activeItem === 'viewProfile'} onClick={this.handleItemClick}>
-  <Link to="/profile">View Profile</Link>
-</Menu.Item> */}
-
 class Site extends Component {
 
   state = { activeItem: 'home' }
@@ -32,7 +28,7 @@ s
     return (
     <div className="Site">
       <div>
-        <Menu className="staticCSSStyle" color={'teal'} inverted secondary>
+        <Menu fixed="top" color={'teal'} inverted secondary>
         <Menu.Item header onClick={()=>browserHistory.push('/')} >CANJE</Menu.Item>
         <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} />
         <Menu.Item position='right'>
@@ -41,7 +37,7 @@ s
       </Menu>
       </div>
       <div className="main-menu">
-        <Menu className="staticCSSStyle" vertical>
+        <Menu vertical>
           <Menu.Item>
             <Menu.Header>For Trade</Menu.Header>
 
@@ -90,8 +86,10 @@ s
             <Menu.Header>About</Menu.Header>
 
             <Menu.Menu>
-              <Menu.Item name='Terms of Service' active={activeItem === 'tos'} onClick={this.handleItemClick} />
               <Menu.Item name='F A Qs' active={activeItem === 'faq'} onClick={this.handleItemClick} />
+                <Menu.Item name='Terms of Service' active={activeItem === 'tos'} onClick={()=>browserHistory.push('/termsofservice')} >
+                  Terms of Service
+                </Menu.Item>
             </Menu.Menu>
           </Menu.Item>
         </Menu>

@@ -13,6 +13,7 @@ import PublicItemDetails from './publicItemDetails'
 import MyOffers from './myOffers'
 import MakeOffer from './makeOffer'
 import ItemByCatagory from './itemsByCategory'
+import TermsAndConditions from './termsandconditions'
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/category/:category" component={ItemByCatagory} />
+          <Route path='/termsofservice' component={TermsAndConditions} />
           <Route onEnter={requireAuth}>
             {/* Place all authenticated routes here */}
             <Route path="/public/profile/:userid" component={Profile} />

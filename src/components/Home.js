@@ -5,12 +5,9 @@ import {Link, browserHistory} from 'react-router'
 import SearchInput, {createFilter} from 'react-search-input'
 import './Home.css';
 
-const getItems = function(){
-  return fetch('/api/items', {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
-}
 
 const KEYS_TO_FILTERS = ['itemname', 'itemdescription']
-/* <p className="itemCatagory">{item.itemcatagory}</p> */
+
 class Home extends Component {
   static propTypes = {
     ...connectProfile.PropTypes
@@ -25,13 +22,14 @@ class Home extends Component {
       }],
       searchTerm: ''
      }
+     this.getItems = this.getItems.bind(this)
      this.searchUpdated = this.searchUpdated.bind(this)
     }
   // getInitialState () {
   //   return { searchTerm: '' }
   // }
   componentDidMount(){
-      getItems().then((response) => {
+      this.getItems().then((response) => {
         this.setState({items: response})
       })
   }
@@ -41,7 +39,7 @@ class Home extends Component {
     return (
       <div className="Home">
         <div className="Home-TitleContainer">
-          <div  className="allItemTitle"><h1>All</h1></div>
+          <div className="EditProfile-heading">All</div>
            <SearchInput className="search-input" onChange={this.searchUpdated} />
          </div>
         <div className="Home-intro">
@@ -68,6 +66,9 @@ class Home extends Component {
         </div>
       </div>
     );
+  }
+  getItems = () => {
+    return fetch('/api/items', {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
   }
   searchUpdated (term) {
     this.setState({searchTerm: term})
