@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {connectProfile} from '../auth';
 import {Image, Button} from 'semantic-ui-react'
 import {Link, browserHistory} from 'react-router'
+import SearchInput, {createFilter} from 'react-search-input'
 import './Home.css';
 
 const getItems = function(){
   return fetch('/api/items', {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
 }
+
+const KEYS_TO_FILTERS = ['itemname', 'itemdescription']
 /* <p className="itemCatagory">{item.itemcatagory}</p> */
 class Home extends Component {
   static propTypes = {
@@ -16,9 +19,17 @@ class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
-      items: []
+      items: [{
+        itemname: 'Loading',
+        itemdescription: 'Loading'
+      }],
+      searchTerm: ''
      }
+     this.searchUpdated = this.searchUpdated.bind(this)
     }
+  // getInitialState () {
+  //   return { searchTerm: '' }
+  // }
   componentDidMount(){
       getItems().then((response) => {
         this.setState({items: response})
@@ -26,11 +37,13 @@ class Home extends Component {
   }
 
   render() {
+    const filteredItems = this.state.items.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     return (
       <div className="Home">
         <div className="allItemTitle"><h1>All</h1></div>
+        <SearchInput className="search-input" onChange={this.searchUpdated} />
         <div className="Home-intro">
-          {this.state.items.map ((item, index) => {
+          {filteredItems.map ((item, index) => {
                 let url = `/public/itemDetails/profile/${item.userid}/item/${item.itemid}`
                 return (
                   <div className="allItemContainer" id={index}>
@@ -54,6 +67,10 @@ class Home extends Component {
       </div>
     );
   }
+  searchUpdated (term) {
+    this.setState({searchTerm: term})
+  }
+
 
 }
 
