@@ -87,8 +87,8 @@ app.get('/api/offers/check', controller.checkOffers)
 app.put('/api/offers', controller.markAsSeen)
 
 
-app.listen('1138', function(){
-  console.log("Successfully listening on : 1138")
+app.listen('80', function(){
+  console.log("Successfully listening on : 80")
 })
 
 function signRequest(req, res) {
