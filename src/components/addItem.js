@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {hashHistory, browserHistory} from 'react-router'
+import {browserHistory} from 'react-router'
 import {Button, Dropdown, Divider, Input, Label, TextArea} from 'semantic-ui-react';
 import {connectProfile} from '../auth';
 import FineUploaderS3 from 'fine-uploader-wrappers/s3'
@@ -174,7 +174,7 @@ class addItem extends Component {
     let item = this.state.item
     item.name = this.nameInput
     item.category = this.state.selectedCatagory
-    item.description = this.descriptionInput.value
+    item.description = this.descriptionInput
     this.setState({
       saving: true,
       item: item

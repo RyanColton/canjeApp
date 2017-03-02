@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connectProfile} from '../auth';
 import {Image, Button} from 'semantic-ui-react'
-import {Link, browserHistory} from 'react-router'
+import {browserHistory} from 'react-router'
 import SearchInput, {createFilter} from 'react-search-input'
 import './Home.css';
 
@@ -25,9 +25,7 @@ class Home extends Component {
      this.getItems = this.getItems.bind(this)
      this.searchUpdated = this.searchUpdated.bind(this)
     }
-  // getInitialState () {
-  //   return { searchTerm: '' }
-  // }
+
   componentDidMount(){
       this.getItems().then((response) => {
         this.setState({items: response})
@@ -50,7 +48,7 @@ class Home extends Component {
                     <div className='allItemBox'>
                     <img className="allItemImg" src={item.itemimageurl}/>
                       <div className="allItemInfo">
-                        <Image shape="circular" src={item.thumbnail}/>
+                        <Image shape="circular" src={item.thumbnail} alt='User'/>
                         <div className="allItemText">
                         <p className="allItemName">{item.itemname}</p>
                         <div className="separator"></div>

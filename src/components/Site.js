@@ -1,12 +1,24 @@
 import React, {Component, PropTypes} from 'react';
 import {Link, browserHistory} from 'react-router';
 import {connectProfile, logout, login} from '../auth';
-import {Menu, Button, Dropdown} from 'semantic-ui-react'
+import {Menu, Button, Icon} from 'semantic-ui-react'
 import './Site.css';
 
 class Site extends Component {
 
-  state = { activeItem: 'home' }
+  newOffers = (profile) =>{
+    return fetch(`/api/offers/check?userid=${profile.identities[0].user_id}`, {method: 'get'}).then((r)=>r.json()).catch((err)=>console.log(err))
+  }
+
+  constructor(){
+    super()
+    this.state = {
+            activeItem: 'home',
+            icon: <Icon name='star' color="red" />,
+            newOffer: false
+           }
+    this.newOffers = this.newOffers.bind(this)
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -71,6 +83,7 @@ s
                 Edit Profile
               </Menu.Item>
               <Menu.Item name='My offers' active={activeItem === 'Offers'} onClick={()=>browserHistory.push('/profile/myOffers')} >
+                {this.state.newOffer? this.state.icon : ""}
                 My Offers
               </Menu.Item>
               <Menu.Item name='My Items' active={activeItem === 'myItems'} onClick={()=>browserHistory.push('/profile/myItems')} >
@@ -100,6 +113,11 @@ s
       </div>
     </div>
     );
+  }
+
+  componentDidMount(){
+    const profile = this.props.profile
+    profile ? this.newOffers(profile).then((r)=>this.setState({newOffer: r[0].exists})) : ''
   }
 
   renderUserControls() {

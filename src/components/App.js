@@ -32,7 +32,7 @@ class App extends Component {
             <Route path="/profile/myItems" component={ProfileItems} />
             <Route path="/profile/myItems/:item" component={ProfileItemDetails} />
             <Route path="/profile/myOffers" component={MyOffers}/>
-            <Route path ="/profile/makeOffer/profile/:userid/item/:item" component={MakeOffer}/>
+            <Route path="/profile/makeOffer/profile/:userid/item/:item" component={MakeOffer}/>
             <Route path='/public/itemDetails/profile/:userid/item/:item' component={PublicItemDetails} />
           </Route>
         </Route>

@@ -82,6 +82,10 @@ app.delete('/api/offers/delete', controller.removeOffer)
 
 app.get('/api/users', controller.getUser)
 
+app.get('/api/offers/check', controller.checkOffers)
+
+app.put('/api/offers', controller.markAsSeen)
+
 
 app.listen('1138', function(){
   console.log("Successfully listening on : 1138")

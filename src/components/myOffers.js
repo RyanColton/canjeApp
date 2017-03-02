@@ -3,8 +3,7 @@ import {connectProfile} from '../auth';
 import {Table, Header, Image, Button, Popup, Icon} from 'semantic-ui-react'
 import {browserHistory} from 'react-router'
 import './myOffers.css'
-let profile
-let offers = []
+
 class MyOffers extends Component{
   static propTypes = {
     ...connectProfile.PropTypes
@@ -12,16 +11,22 @@ class MyOffers extends Component{
 
   constructor(props){
     super(props)
-    this.state = {}
-    profile = props.profile
+    this.state = {
+      offers:[],
+      profile: props.profile
+    }
     this.getOffers = this.getOffers.bind(this)
     this.deleteOffer = this.removeOffer.bind(this)
+    this.offersSeen = this.offersSeen.bind(this)
   }
   getOffers = () => {
-    return fetch(`/api/offers?userid=${profile.identities[0].user_id}`, {method: 'get'}).then((r)=>r.json()).then((response)=>offers = response).catch((err)=>console.log(err))
+    return fetch(`/api/offers?userid=${this.state.profile.identities[0].user_id}`, {method: 'get'}).then((r)=>r.json()).then((response)=>this.setState({offers: response})).catch((err)=>console.log(err))
   }
   removeOffer = (id) => {
     return fetch(`/api/offers/delete?offerid=${id}`, {method:'delete'})
+  }
+  offersSeen = (id) => {
+    return fetch(`/api/offers?userid=${id}`, {method: 'put'})
   }
   render(){
     return(
@@ -37,7 +42,7 @@ class MyOffers extends Component{
             </Table.Row>
          </Table.Header>
          <Table.Body>
-          {offers.map((item, index) => {
+          {this.state.offers.map((item, index) => {
             return(
               <Table.Row>
           <Table.Cell width="three wide">
@@ -90,7 +95,7 @@ class MyOffers extends Component{
   }
 
   componentDidMount(){
-  this.getOffers().then(()=>console.log(offers))
+  this.getOffers().then(this.offersSeen(this.state.profile.identities[0].user_id))
   }
 }
 

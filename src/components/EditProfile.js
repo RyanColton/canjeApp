@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Image, Input, Divider, Label, TextArea, Form} from 'semantic-ui-react';
+import {Button, Image, Input, Divider, Label, TextArea} from 'semantic-ui-react';
 import {connectProfile} from '../auth';
 import './EditProfile.css';
 

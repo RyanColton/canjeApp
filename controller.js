@@ -86,5 +86,17 @@ module.exports = {
      console.log(err)
      res.status(200).send(user)
    })
+ },
+ checkOffers: (req, res, next)=>{
+   db.check_offer([req.query.userid], (err, statement)=>{
+     console.log(err)
+     res.status(200).send(statement)
+   })
+ },
+ markAsSeen: (req, res, next)=>{
+   db.mark_as_seen([req.query.userid], (err, statement)=>{
+     console.log(err)
+     res.status(200).send('Offers Updated')
+   })
  }
 }

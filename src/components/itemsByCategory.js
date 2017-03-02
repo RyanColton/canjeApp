@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import {connectProfile} from '../auth';
 import {Image, Button} from 'semantic-ui-react'
-import {Link, browserHistory} from 'react-router'
+import {browserHistory} from 'react-router'
 import SearchInput, {createFilter} from 'react-search-input'
 import './Home.css';
-//
-// const getItems = function(param){
-//   return fetch(`/api/items?category=${param}`, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
-// }
+
 const KEYS_TO_FILTERS = ['itemname', 'itemdescription']
-/* <p className="itemCatagory">{item.itemcatagory}</p> */
+
 class ItemByCatagory extends Component {
   static propTypes = {
     ...connectProfile.PropTypes
@@ -54,9 +51,9 @@ class ItemByCatagory extends Component {
                   return (
                     <div className="allItemContainer" id={index}>
                       <div className='allItemBox'>
-                      <img className="allItemImg" src={item.itemimageurl}/>
+                      <img className="allItemImg" src={item.itemimageurl} alt="Image"/>
                         <div className="allItemInfo">
-                          <Image shape="circular" src={item.thumbnail}/>
+                          <Image shape="circular" src={item.thumbnail} alt="User"/>
                           <div className="allItemText">
                           <p className="allItemName">{item.itemname}</p>
                           <div className="separator"></div>

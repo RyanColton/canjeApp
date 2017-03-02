@@ -1,22 +1,10 @@
 import React, {Component} from 'react';
 import {connectProfile} from '../auth';
-import {Button, Dimmer, Header, Image} from 'semantic-ui-react'
-import {Link} from 'react-router';
+import {Button} from 'semantic-ui-react'
+import {Link, browserHistory} from 'react-router';
 import './profileItems.css'
 
 let apiCallUrl
-let profile
-let profileItems = []
-let itemDetails = {}
-const getProfileItems = () => {
-  return fetch(apiCallUrl, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
-}
-
-const getDetails = (id) => {
-  let apiDetailCall = '/api/profile/item?itemid=' + id;
-  this.setState({detailsToggle: true})
-  return fetch(apiDetailCall, {method: 'get'}).then((response) => response.json()).then((response) => itemDetails = response).catch((err) => console.log(err))
-}
 
 class ProfileItems extends Component {
 
@@ -28,11 +16,15 @@ class ProfileItems extends Component {
       super(props);
       this.state = {
         detailsToggle: false,
-        liveID: ''
-
+        liveID: '',
+        apiCallUrl: `/api/items?userid=${props.profile.identities[0].user_id}`,
+        profileItems: [],
+        profile: props.profile
       }
-      profile = props.profile;
-      apiCallUrl = '/api/items?userid=' + profile.identities[0].user_id;
+      this.getProfileItems = this.getProfileItems.bind(this)
+    }
+    getProfileItems = () => {
+      return fetch(this.state.apiCallUrl, {method: 'get'}).then((response) => response.json()).catch((err) => console.log(err))
     }
 
   render(){
@@ -40,15 +32,15 @@ class ProfileItems extends Component {
       <div className="ProfileItems-PageContainer">
       <div className="EditProfile-heading">My Items</div>
         <div className="itemContainer">
-          {profileItems.map ((item, index) => {
+          {this.state.profileItems.map ((item, index) => {
               let url = `/profile/myItems/${item.itemid}`
               return (
                 <div key={index} className="itemDiv" id="itemDiv">
-                  <img className="itemImg" src={item.itemimageurl} id='itemImg'/>
+                  <img className="itemImg" src={item.itemimageurl} id='itemImg' alt="Image"/>
                   <div className="itemBasicInfo" id="itemBasicInfo">
                     <p className="profileItemName">{item.itemname}</p>
                     <p className="profileItemCatagory">{item.itemcatagory}</p>
-                    <Button color='teal' > <Link to={url}>Get Details</Link> </Button>
+                    <Button color='teal' onClick={()=>browserHistory.push(url)} content="Get Details" />
                   </div>
                 </div>
               )
@@ -59,7 +51,7 @@ class ProfileItems extends Component {
   }
 
   componentDidMount(){
-    getProfileItems().then((r) => profileItems = r)
+    this.getProfileItems().then((r) => this.setState({profileItems: r}))
   }
 
 }
