@@ -32,6 +32,8 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}))
 app.set('db', massiveInstance);
+
+app.use(express.static(__dirname + '/build'))
 var db = app.get('db');
 var controller = require('./controller.js');
 var imageInfo = {}
