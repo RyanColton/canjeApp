@@ -3,8 +3,7 @@ import {connectProfile} from '../auth';
 import {browserHistory} from 'react-router'
 import {Button} from 'semantic-ui-react'
 import './makeOffer.css'
-let profile
-let profileItems = []
+
 
 
 class MakeOffer extends Component{
@@ -15,8 +14,9 @@ class MakeOffer extends Component{
   constructor(props){
     super(props)
     this.state = {
+      profileItems: [],
+      profile: props.profile
     }
-    profile = props.profile
     this.getProfileItems = this.getProfileItems.bind(this)
     this.makeOffer = this.makeOffer.bind(this)
   }
@@ -38,11 +38,11 @@ class MakeOffer extends Component{
 
     return(
       <div className='makeOfferContainer'>
-        {profileItems.map ((item, index) => {
+        {this.state.profileItems.map ((item, index) => {
           let offerInfo = {
             itemofferedid: item.itemid,
             itemwantedid: parseInt(this.props.params.item),
-            userofferingid: profile.identities[0].user_id,
+            userofferingid: this.state.profile.identities[0].user_id,
             userofferedtoid: this.props.params.userid,
             timestamp: new Date()
           }
@@ -51,7 +51,7 @@ class MakeOffer extends Component{
                 <img className="itemImg" src={item.itemimageurl} id='itemImg'/>
                 <div className="itemBasicInfo" id="itemBasicInfo">
                   <p className="profileItemName">{item.itemname}</p>
-                  <Button color='teal' onClick={()=>{this.makeOffer(offerInfo).then((response)=>{browserHistory.push('/')})}} content="Offer Item" icon='checkmark'/>
+                  <Button color='teal' onClick={()=>{this.makeOffer(offerInfo).then((response)=>{browserHistory.push('/home')})}} content="Offer Item" icon='checkmark'/>
                 </div>
               </div>
             )
@@ -60,7 +60,7 @@ class MakeOffer extends Component{
     )
   }
   componentDidMount(){
-    this.getProfileItems(profile).then((r)=> profileItems = r).then(()=>console.log(profileItems))
+    this.getProfileItems(this.state.profile).then((r)=> this.setState({profileItems: r})).then(()=>console.log(this.state.profileItems))
   }
 }
 

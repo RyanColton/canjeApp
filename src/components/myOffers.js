@@ -20,7 +20,16 @@ class MyOffers extends Component{
     this.offersSeen = this.offersSeen.bind(this)
   }
   getOffers = () => {
-    return fetch(`/api/offers?userid=${this.state.profile.identities[0].user_id}`, {method: 'get'}).then((r)=>r.json()).then((response)=>this.setState({offers: response})).catch((err)=>console.log(err))
+    return fetch(`/api/offers?userid=${this.state.profile.identities[0].user_id}`, {method: 'get'}).then((r)=>{
+      console.log('pre json ', r)
+      return r.json()
+
+    }).then((response)=>{
+
+      console.log('post json ', response)
+      return this.setState({offers: response})
+
+    }).catch((err)=>console.log(err))
   }
   removeOffer = (id) => {
     return fetch(`/api/offers/delete?offerid=${id}`, {method:'delete'})
@@ -29,6 +38,7 @@ class MyOffers extends Component{
     return fetch(`/api/offers?userid=${id}`, {method: 'put'})
   }
   render(){
+    console.log(this.state.profile.identities[0].user_id)
     return(
       <div className="offersContainerDiv">
         <Table>
@@ -60,7 +70,7 @@ class MyOffers extends Component{
               <Header.Content className="offersTextAttr" onClick={()=>browserHistory.push(`/public/itemDetails/profile/${item.userofferingid}/item/${item.itemofferedid}`)}>
                 {item.offeritemname}
                 <br/>
-                <Header.Subheader>{item.offeritemcatagory}</Header.Subheader>
+                <Header.Subheader className="orange">{item.offeritemcatagory}</Header.Subheader>
               </Header.Content>
             </Header>
           </Table.Cell>
@@ -69,7 +79,7 @@ class MyOffers extends Component{
               <Image src={item.wanteditemimage} shape='rounded' size='mini' />
               <Header.Content className="offersTextAttr" onClick={()=>browserHistory.push(`/public/itemDetails/profile/${item.userofferedtoid}/item/${item.itemwantedid}`)}>
                 {item.wanteditemname}
-                <Header.Subheader color="teal">{item.wanteditemcatagory}</Header.Subheader>
+                <Header.Subheader className="orange">{item.wanteditemcatagory}</Header.Subheader>
               </Header.Content>
             </Header>
           </Table.Cell>

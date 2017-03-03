@@ -18,7 +18,7 @@ class Welcome extends Component{
     <div className="WelcomeScreenPageContainer">
       <div className='WelcomeScreenInfoContainer' >
         <div>
-          <p className="WelcomeScreenTitleText">CANJE</p>
+          <p className="WelcomeScreenTitleText">CAN<span className="orange">J</span>E</p>
           <div className="WelcomeScreenSubTitleText">
             <p>Trade</p> <p className="red">Discover</p> <p>Barter</p>
           </div>

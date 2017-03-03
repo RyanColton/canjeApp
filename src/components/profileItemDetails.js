@@ -45,7 +45,7 @@ class ProfileItemDetails extends Component {
         <div className="PublicItemDetail-info">
           <Header onClick={()=>browserHistory.push(`/public/profile/${this.state.item.userid}`)} as='h1'>
             {this.state.item.itemname}
-            <Header.Subheader>
+            <Header.Subheader className="orange">
               {this.state.item.itemcatagory}
             </Header.Subheader>
           </Header>

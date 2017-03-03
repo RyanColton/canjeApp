@@ -53,7 +53,6 @@ module.exports = {
    })
  },
  getOffers: (req, res, next) => {
-
    db.get_offers([req.query.userid], (err, offers) => {
      res.status(200).send(offers)
    })

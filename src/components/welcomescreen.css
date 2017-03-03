@@ -25,6 +25,9 @@
   padding: 0px;
   margin: 0px
 }
+.orange{
+  color: #FCA500 !important;
+}
 .WelcomeScreenSubTitleText{
   font-size: 40px;
  font-family: 'Roboto', sans-serif;
@@ -36,6 +39,7 @@
  justify-content: space-around;
  align-items: baseline;
 }
+
 .red{
   font-family: 'Roboto', sans-serif;
   color: #FCA500;

@@ -52,7 +52,7 @@ class Home extends Component {
                         <div className="allItemText">
                         <p className="allItemName">{item.itemname}</p>
                         <div className="separator"></div>
-                        <p className="allItemCatagory">{item.itemcatagory}</p>
+                        <p className="allItemCatagory orange">{item.itemcatagory}</p>
                         </div>
                         <Button color="teal" size="tiny" onClick={()=>browserHistory.push(url)}>Details</Button>
                       </div>

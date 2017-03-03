@@ -41,7 +41,7 @@ s
     <div className="Site">
       <div>
         <Menu fixed="top" color={'teal'} inverted secondary>
-        <Menu.Item header onClick={()=>browserHistory.push('/home')} >CANJE</Menu.Item>
+        <Menu.Item header onClick={()=>browserHistory.push('/home')} >CAN<span className="orange">J</span>E</Menu.Item>
         <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About"/>
         <Menu.Item position='right'>
           <Button onClick={loginButton}>{loginButtonText}</Button>

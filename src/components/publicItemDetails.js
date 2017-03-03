@@ -28,7 +28,7 @@ class PublicItemDetails extends Component {
           <Header onClick={()=>browserHistory.push(`/public/profile/${this.state.item.userid}`)} as='h1'>
             <Image src={this.state.item.userimage} shape="circular" size="tiny"/>
             &nbsp; {this.state.item.itemname}
-            <Header.Subheader>
+            <Header.Subheader className="orange">
               {this.state.item.itemcatagory}
             </Header.Subheader>
           </Header>
