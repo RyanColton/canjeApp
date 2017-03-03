@@ -89,6 +89,9 @@ app.get('/api/offers/check', controller.checkOffers)
 
 app.put('/api/offers', controller.markAsSeen)
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+});
 
 app.listen('1138', function(){
   console.log("Successfully listening on : 1138")
