@@ -42,14 +42,14 @@ s
       <div>
         <Menu fixed="top" color={'teal'} inverted secondary>
         <Menu.Item header onClick={()=>browserHistory.push('/')} >CANJE</Menu.Item>
-        <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} />
+        <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About"/>
         <Menu.Item position='right'>
           <Button onClick={loginButton}>{loginButtonText}</Button>
         </Menu.Item>
       </Menu>
       </div>
-      <div className="main-menu">
-        <Menu vertical>
+      <div className="main-menu" >
+        <Menu vertical size="large" fixed="left" className="Site-VerticalMenu">
           <Menu.Item>
             <Menu.Header>For Trade</Menu.Header>
 

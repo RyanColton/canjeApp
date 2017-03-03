@@ -50,9 +50,10 @@ app.post("/s3handler", function(req, res) {
 });
 
 app.post('/api/profile/addItem', function(req, res, next){
+  console.log(req.body)
   var itemimageurl = `https://s3-us-west-1.amazonaws.com/canje/${imageInfo.key}`
   console.log()
-  db.add_item([req.body.userID, req.body.name, req.body.description, itemimageurl, req.body.category], function(err, item){
+  db.add_item([req.body.userID, req.body.name, req.body.description, itemimageurl, req.body.category, req.body.timestamp], function(err, item){
     console.log(err)
   res.status(200).send('Item Added')
   })
@@ -87,8 +88,8 @@ app.get('/api/offers/check', controller.checkOffers)
 app.put('/api/offers', controller.markAsSeen)
 
 
-app.listen('80', function(){
-  console.log("Successfully listening on : 80")
+app.listen('1138', function(){
+  console.log("Successfully listening on : 1138")
 })
 
 function signRequest(req, res) {

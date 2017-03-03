@@ -7,6 +7,9 @@
 .staticCSSStyle{
   margin-top:20px;
 }
+.Site-VerticalMenu{
+  margin-top: 45px !important;
+}
 .Site-logo {
   animation: Site-logo-spin infinite 20s linear;
   height: 80px;
@@ -36,6 +39,7 @@
 }
 
 .Site-page {
+  margin-left: 250px;
   margin-top: 30px;
   padding: 10px;
   float:left;

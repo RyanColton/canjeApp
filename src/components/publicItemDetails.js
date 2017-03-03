@@ -27,7 +27,7 @@ class PublicItemDetails extends Component {
         <div className="PublicItemDetail-info">
           <Header onClick={()=>browserHistory.push(`/public/profile/${this.state.item.userid}`)} as='h1'>
             <Image src={this.state.item.userimage} shape="circular" size="tiny"/>
-            {this.state.item.itemname}
+            &nbsp; {this.state.item.itemname}
             <Header.Subheader>
               {this.state.item.itemcatagory}
             </Header.Subheader>
@@ -37,6 +37,12 @@ class PublicItemDetails extends Component {
             <Container textAlign='left'>
               <Header as='h3'>Description</Header>
               <p> &nbsp; &nbsp; {this.state.item.itemdescription}</p>
+            </Container>
+            <br/>
+            <Divider />
+            <Container textAlign='center'>
+              <Header as='h5'>{this.state.item.userfirstname} is looking for:</Header>
+              <p> &nbsp; &nbsp; {this.state.item.itemswanted}</p>
             </Container>
           </div>
           <br/>

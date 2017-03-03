@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {requireAuth} from '../auth';
 import Site from './Site';
 import Home from './Home';
@@ -14,18 +14,20 @@ import MyOffers from './myOffers'
 import MakeOffer from './makeOffer'
 import ItemByCatagory from './itemsByCategory'
 import TermsAndConditions from './termsandconditions'
+import Welcome from './welcomescreen'
 
 class App extends Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route component={Site}>
-          <Route path="/" component={Home} />
-          <Route path="/login" component={Login} />
+        <Route path='/welcome' component={Welcome} />
+        <Route path='/' component={Site}>
           <Route path="/category/:category" component={ItemByCatagory} />
-          <Route path='/termsofservice' component={TermsAndConditions} />
+          <Route path="/login" component={Login} />
+          <Route path='/home' component={Home} />
           <Route onEnter={requireAuth}>
             {/* Place all authenticated routes here */}
+            <Route path='/termsofservice' component={TermsAndConditions} />
             <Route path="/public/profile/:userid" component={Profile} />
             <Route path="/profile/edit" component={EditProfile} />
             <Route path="/profile/addItem" component={AddItem} />

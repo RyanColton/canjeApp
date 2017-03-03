@@ -175,6 +175,7 @@ class addItem extends Component {
     item.name = this.nameInput
     item.category = this.state.selectedCatagory
     item.description = this.descriptionInput
+    item.timestamp = new Date()
     this.setState({
       saving: true,
       item: item

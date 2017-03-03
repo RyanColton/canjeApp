@@ -33,7 +33,6 @@ class ItemByCatagory extends Component {
   componentDidMount(){
       this.getItems(this.props.params.category).then((response) => {
         this.setState({items: response})
-        console.log(this.state.items)
       })
   }
 

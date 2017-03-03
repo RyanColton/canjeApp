@@ -8,7 +8,11 @@
 }
 
 .itemDetailedImage{
-  width: 500px;
+  margin: 10px;
+  max-width: 400px !important;
+  max-height: 400px !important;
+  height: auto !important;
+  width:auto !important;
 }
 
 .itemDetailedInfo{

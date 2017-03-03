@@ -36,9 +36,6 @@ class ProfileItemDetails extends Component {
     return fetch(`/api/profile/item?itemid=${param}`, {method: 'delete'})
   }
 
-  componentWillMount(){
-  console.log("before mount ", this.state.isAvailable)
-  }
   render(){
     console.log("on mount ", this.state.isAvailable)
     return(
@@ -47,7 +44,6 @@ class ProfileItemDetails extends Component {
         <br/>
         <div className="PublicItemDetail-info">
           <Header onClick={()=>browserHistory.push(`/public/profile/${this.state.item.userid}`)} as='h1'>
-            <Image src={this.state.item.userimage} shape="circular" size="tiny"/>
             {this.state.item.itemname}
             <Header.Subheader>
               {this.state.item.itemcatagory}
@@ -66,7 +62,7 @@ class ProfileItemDetails extends Component {
 
           <Button color='teal' size="large" icon='check circle' labelPosition='right' onClick={()=>{this.markAsUnavalible(this.state.item.itemid, this.setState)}} content={this.state.isAvailable ? 'Mark as Sold' : 'Mark as Available'} />
           <Popup
-            trigger={<Button color='teal' size="large" icon='delete' labelPosition='right' content='Delete' />}
+            trigger={<Button color='red' icon='delete' labelPosition='right' content='Delete' />}
             content={<Button color='red' size='large' onClick={()=>{this.deleteItem(this.state.item.itemid).then(()=>browserHistory.push('/profile/myItems'))}}>Confirm Deletion</Button>}
             on='click'
             />
@@ -80,7 +76,7 @@ class ProfileItemDetails extends Component {
     this.getItemDetails(this.props.params.item).then((r) => {
       this.state.item = r[0]
       this.setState({isAvailable: r[0].available})
-      console.log('after mount ', this.state.isAvailable)
+      console.log(this.state.item)
   })
 
   }

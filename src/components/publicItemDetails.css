@@ -6,7 +6,10 @@
 
 .PublicItemDetail-image{
   margin: 10px;
-  width: 400px;
+  max-width: 400px !important;
+  max-height: 400px !important;
+  height: auto !important;
+  width:auto !important;
 }
 
 .PublicItemDetail-info{
