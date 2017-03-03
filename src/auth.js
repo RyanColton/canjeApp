@@ -57,7 +57,7 @@ export function logout() {
   clearNextPath();
   clearIdToken();
   clearProfile();
-  browserHistory.push(ROOT_ROUTE);
+  browserHistory.push('/');
 }
 
 export function requireAuth(nextState, replace) {

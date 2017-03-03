@@ -20,8 +20,8 @@ class App extends Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path='/welcome' component={Welcome} />
-        <Route path='/' component={Site}>
+        <Route path='/' component={Welcome} />
+        <Route path='/site' component={Site}>
           <Route path="/category/:category" component={ItemByCatagory} />
           <Route path="/login" component={Login} />
           <Route path='/home' component={Home} />

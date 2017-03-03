@@ -41,7 +41,7 @@ s
     <div className="Site">
       <div>
         <Menu fixed="top" color={'teal'} inverted secondary>
-        <Menu.Item header onClick={()=>browserHistory.push('/')} >CANJE</Menu.Item>
+        <Menu.Item header onClick={()=>browserHistory.push('/home')} >CANJE</Menu.Item>
         <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About"/>
         <Menu.Item position='right'>
           <Button onClick={loginButton}>{loginButtonText}</Button>
@@ -54,7 +54,7 @@ s
             <Menu.Header>For Trade</Menu.Header>
 
             <Menu.Menu>
-              <Menu.Item name='All Items' active={activeItem === 'All Items'} onClick={()=>browserHistory.push('/')}>
+              <Menu.Item name='All Items' active={activeItem === 'All Items'} onClick={()=>browserHistory.push('/home')}>
                 All Items
               </Menu.Item>
               <Menu.Item name='Kichen' active={activeItem === 'Kitchen'} onClick={()=>browserHistory.push('/category/Kitchen')}>

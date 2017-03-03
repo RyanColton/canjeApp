@@ -11,6 +11,8 @@ class Welcome extends Component{
   };
 
   render(){
+    const profile = this.props.profile
+    profile ? browserHistory.push('/profile/edit') : ""
     let loginButton = login
     return(
     <div className="WelcomeScreenPageContainer">
