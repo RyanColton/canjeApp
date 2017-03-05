@@ -178,6 +178,7 @@ class EditProfile extends Component {
         username: this.usernameInput,
         userLastName: this.props.profile.family_name
       }
+      console.log(data)
       data = JSON.stringify(data)
       !this.state.exists ? this.newUser(data) : this.updateUser(data)
       this.setState({error, saved: !error, saving: false});
