@@ -157,12 +157,12 @@ class EditProfile extends Component {
     this.setState({saving: true}, async () => {
       const error = await this.props.onUpdateProfile({
         user_metadata: {
-          location: this.locationInput,
-          username: this.usernameInput,
-          email: this.emailInput,
-          phone: this.phoneInput,
-          itemsWanted: this.itemsWantedInput,
-          personalBio: this.personalBioInput
+          location: this.locationInput || this.props.profile.user_metadata.location,
+          username: this.usernameInput || this.props.profile.user_metadata.username,
+          email: this.emailInput || this.props.profile.user_metadata.email,
+          phone: this.phoneInput || this.props.profile.user_metadata.phone,
+          itemsWanted: this.itemsWantedInput || this.props.profile.user_metadata.itemsWanted,
+          personalBio: this.personalBioInput || this.props.profile.user_metadata.personalBio
         }
       });
       let data = {
@@ -170,12 +170,12 @@ class EditProfile extends Component {
         userImage: this.props.profile.picture_large,
         thumbnail: this.props.profile.picture,
         userFirstName: this.props.profile.given_name,
-        useremail: this.emailInput,
-        userphone: this.phoneInput,
-        location: this.locationInput,
-        personalbio: this.personalBioInput,
-        itemswanted: this.itemsWantedInput,
-        username: this.usernameInput,
+        useremail: this.emailInput || this.props.profile.user_metadata.email,
+        userphone: this.phoneInput || this.props.profile.user_metadata.phone,
+        location: this.locationInput || this.props.profile.user_metadata.location,
+        personalbio: this.personalBioInput || this.props.profile.user_metadata.personalBio,
+        itemswanted: this.itemsWantedInput || this.props.profile.user_metadata.itemsWanted,
+        username: this.usernameInput || this.props.profile.user_metadata.username,
         userLastName: this.props.profile.family_name
       }
       console.log(data)

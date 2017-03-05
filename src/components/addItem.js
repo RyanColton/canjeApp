@@ -184,7 +184,7 @@ class addItem extends Component {
     });
     const data = JSON.stringify(this.state.item)
     addItemToDB(data).then((response)=>{
-      browserHistory.push("/")
+      browserHistory.push("/home")
     })
 
   };
