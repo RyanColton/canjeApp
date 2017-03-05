@@ -45,3 +45,21 @@
   float:left;
   width:950px
 }
+
+@media (max-width:450px){
+
+  .Site {
+    width: 400px;
+  }
+
+  .Site-page{
+    width:400px;;
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+
+  .Site-VerticalMenu{
+    margin-top: 45px !important;
+    display:none !important;
+  }
+}

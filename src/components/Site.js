@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Link, browserHistory} from 'react-router';
 import {connectProfile, logout, login} from '../auth';
-import {Menu, Button, Icon} from 'semantic-ui-react'
+import {Menu, Button, Icon, Dropdown} from 'semantic-ui-react'
 import './Site.css';
 
 class Site extends Component {
@@ -13,9 +13,10 @@ class Site extends Component {
   constructor(){
     super()
     this.state = {
-            activeItem: 'home',
-            icon: <Icon name='star' color="red" />,
-            newOffer: false
+          activeItem: 'home',
+          icon: <Icon name='star' color="red" />,
+          newOffer: false,
+          menuPositionToggle: window.innerWidth
            }
     this.newOffers = this.newOffers.bind(this)
   }
@@ -40,12 +41,25 @@ s
     return (
     <div className="Site">
       <div>
-        <Menu fixed="top" color={'teal'} inverted secondary>
-        <Menu.Item header onClick={()=>browserHistory.push('/home')} >CAN<span className="orange">J</span>E</Menu.Item>
-        <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About"/>
-        <Menu.Item position='right'>
-          <Button onClick={loginButton}>{loginButtonText}</Button>
-        </Menu.Item>
+      <Menu fixed="top" color={'teal'} inverted secondary>
+          <Menu.Item header onClick={()=>browserHistory.push('/home')}>
+            CAN<span className="orange">J</span>E
+          </Menu.Item>
+          <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About" className="hideToggle">
+          </Menu.Item>
+          <Menu.Item>
+          <Dropdown text="Menu" icon='content' className="mobileShow" >
+            <Dropdown.Menu>
+              <Dropdown.Header icon='tags' content='Filter by tag' />
+              <Dropdown.Item>Important</Dropdown.Item>
+              <Dropdown.Item>Announcement</Dropdown.Item>
+              <Dropdown.Item>Discussion</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          </Menu.Item>
+          <Menu.Item position={this.state.menuPositionToggle > 450? 'right' : ''}>
+            <Button onClick={loginButton}>{loginButtonText}</Button>
+          </Menu.Item>
       </Menu>
       </div>
       <div className="main-menu" >

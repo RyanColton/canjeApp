@@ -29,7 +29,7 @@ class EditProfile extends Component {
   }
   newUser = (data)=>{
     console.log('User Added')
-    return fetch(`/api./profile/new`, {
+    return fetch(`/api/profile/new`, {
       method: 'post',
       headers: {
         'Accept': 'application/json',

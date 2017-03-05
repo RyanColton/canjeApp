@@ -52,3 +52,28 @@
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
     text-decoration: none !important;
 }
+
+@media (max-width:450px){
+  .WelcomeScreenPageContainer{
+    background-color: #00B5AD;
+    height:600px;
+  }
+
+  .WelcomeScreenInfoContainer{
+    height: 400px;
+    width: 300px;
+  }
+
+  .WelcomeScreenTitleText{
+    font-size: 125px;
+  }
+
+  .WelcomeScreenSubTitleText{
+    font-size: 30px;
+  }
+
+  .red{
+    font-size: 35px;
+  }
+
+}
