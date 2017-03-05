@@ -13,3 +13,10 @@
   height: 300px;
   margin: 5px;
 }
+
+@media (max-width:450px){
+  .offerItemDiv{
+    width: 350px;
+    height: 350px;
+  }
+}

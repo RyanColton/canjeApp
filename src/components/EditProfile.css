@@ -90,6 +90,7 @@
     margin: 0px auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .hideToggle{
     display:none !important;
@@ -101,6 +102,6 @@
   width: 100%;
   }
   .EditProfile-PersonalBioInput{
-  min-height: 50px;
+  min-height: 50px !important;
   }
 }

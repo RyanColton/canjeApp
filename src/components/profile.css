@@ -37,3 +37,18 @@
 .Profile-InfoValue{
   font-size: 18px
 }
+
+@media (max-width:450px){
+
+  .Profile-UserBody{
+    flex-flow: column;
+  }
+
+  .Profile-UserInfo{
+    width: 100%;
+  }
+  .Profile-UserImg {
+    margin-top: 20px;
+  }
+
+}

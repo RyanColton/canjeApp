@@ -47,13 +47,24 @@ s
           </Menu.Item>
           <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About" className="hideToggle">
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item >
           <Dropdown text="Menu" icon='content' className="mobileShow" >
             <Dropdown.Menu>
-              <Dropdown.Header icon='tags' content='Filter by tag' />
-              <Dropdown.Item>Important</Dropdown.Item>
-              <Dropdown.Item>Announcement</Dropdown.Item>
-              <Dropdown.Item>Discussion</Dropdown.Item>
+              <Dropdown.Header content='For Trade' icon="search"/>
+                <Dropdown.Item onClick={()=>browserHistory.push('/home')}>All Items</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/category/Kitchen')}>Kitchen</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/category/Bathroom')}>Bathroom</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/category/LivingRoom')}>LivingRoom</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/category/Outdoors')}>Outdoors</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/category/Misc')}>Misc</Dropdown.Item>
+              <Dropdown.Header content='Profile' icon="user"/>
+                <Dropdown.Item onClick={()=>browserHistory.push("/profile/edit")}>Edit Profile</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/profile/myOffers')}>My Offers</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/profile/myItems')}>My Items</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/profile/addItem')}>Add Item</Dropdown.Item>
+              <Dropdown.Header content='About' icon="info circle"/>
+                <Dropdown.Item onClick={()=>browserHistory.push('/faq')}>F A Qs</Dropdown.Item>
+                <Dropdown.Item onClick={()=>browserHistory.push('/termsofservice')}>Terms Of Service</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           </Menu.Item>

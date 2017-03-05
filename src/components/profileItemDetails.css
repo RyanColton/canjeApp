@@ -29,3 +29,19 @@
   justify-content: space-around;
   align-items: center;
 }
+
+@media (max-width:450px){
+  .itemDiv {
+    width: 350px;
+    height: 350px;
+  }
+  .itemDetailedContainer{
+    width: 100%;
+  }
+  .itemDetailedInfo{
+    width: 100%;
+  }
+  .itemDetailedButtons{
+    width: 100%;
+  }
+}

@@ -15,3 +15,9 @@
 .PublicItemDetail-info{
  margin-top: 25px;
 }
+
+@media (max-width:450px){
+  .PublicItemDetail-container{
+    flex-direction: column;
+  }
+}

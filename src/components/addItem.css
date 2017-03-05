@@ -72,3 +72,18 @@
   margin-top: 10px;
   color: #7ed321;
 }
+
+@media (max-width:450px){
+  .AddItem-inputContainer{
+    flex-direction: column;
+  }
+
+  .AddItem-imageInput{
+    width: 300px;
+    margin: 15px;
+  }
+  .AddItem-DataInput{
+    width: 300px;
+    margin: 15px;
+  }
+}

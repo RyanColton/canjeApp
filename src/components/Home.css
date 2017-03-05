@@ -131,3 +131,12 @@
 .search-input > input:focus {
   outline: none;
 }
+
+@media (max-width:450px){
+  .allItemImg {
+    width: 100%;
+  }
+  .allItemContainer {
+    width: 350px;
+  }
+}
