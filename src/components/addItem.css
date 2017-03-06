@@ -73,6 +73,14 @@
   color: #7ed321;
 }
 
+.react-fine-uploader-gallery-file-input-container {
+    background: #00B5AD;
+  }
+
+.react-fine-uploader-gallery-dropzone {
+    border: 1px solid #00B5AD;
+}
+
 @media (max-width:450px){
   .AddItem-inputContainer{
     flex-direction: column;

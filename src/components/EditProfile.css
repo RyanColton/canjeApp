@@ -83,7 +83,12 @@
 .mobileShow{
   display: none !important;
 }
-
+.LabelPadding{
+  margin-bottom: 10px !important;
+}
+.ImageLabelPadding{
+  margin-right: 8px !important;
+}
 @media (max-width:450px){
   .EditProfile {
     max-width: 100%;

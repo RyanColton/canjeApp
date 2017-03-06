@@ -68,7 +68,7 @@ s
             </Dropdown.Menu>
           </Dropdown>
           </Menu.Item>
-          <Menu.Item position={this.state.menuPositionToggle > 450? 'right' : ''}>
+          <Menu.Item position='right'>
             <Button onClick={loginButton}>{loginButtonText}</Button>
           </Menu.Item>
       </Menu>

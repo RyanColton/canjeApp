@@ -111,7 +111,7 @@ class addItem extends Component {
         <Divider />
         <div className="AddItem-inputContainer">
           <div className="AddItem-imageInput">
-            <Label className="EditProfile-locationLabel" htmlFor="Name" content="Image" size='big'/>
+            <Label className="EditProfile-locationLabel ImageLabelPadding" htmlFor="Name" content="Image" size='big'/>
             <Gallery uploader={uploader} />
           </div>
           <div className="AddItem-DataInput">
@@ -143,7 +143,7 @@ class addItem extends Component {
                 </div>
                 </div>
                 <Divider />
-                <Label className="EditProfile-locationLabel" htmlFor="description" content="Description" size='big' />
+                <Label className="EditProfile-locationLabel LabelPadding" htmlFor="description" content="Description" size='big' />
                  <TextArea
                    onChange={(e)=>this.descriptionInput = e.target.value}
                    className="EditProfile-PersonalBioInput"

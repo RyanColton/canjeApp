@@ -111,7 +111,7 @@ class EditProfile extends Component {
                  />
               </div>
               <Divider />
-                <Label className="EditProfile-locationLabel" htmlFor="itemsWanted" content="Items Wanted" size="big"/>
+                <Label className="EditProfile-locationLabel LabelPadding" htmlFor="itemsWanted" content="Items Wanted" size="big"/>
                 <TextArea
                   onChange={(e)=>this.itemsWantedInput = e.target.value}
                   className="EditProfile-PersonalBioInput"
@@ -122,7 +122,7 @@ class EditProfile extends Component {
                   autoHeight
                 />
                <Divider />
-               <Label className="EditProfile-locationLabel" htmlFor="personalBio" content="Personal Bio" size="big"/>
+               <Label className="EditProfile-locationLabel LabelPadding" htmlFor="personalBio" content="Personal Bio" size="big"/>
                <TextArea
                  onChange={(e)=>this.personalBioInput = e.target.value}
                  className="EditProfile-PersonalBioInput"
