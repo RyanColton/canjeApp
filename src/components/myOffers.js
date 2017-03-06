@@ -13,7 +13,8 @@ class MyOffers extends Component{
     super(props)
     this.state = {
       offers:[],
-      profile: props.profile
+      profile: props.profile,
+      stateUpToggle: false,
     }
     this.getOffers = this.getOffers.bind(this)
     this.deleteOffer = this.removeOffer.bind(this)
@@ -93,7 +94,10 @@ class MyOffers extends Component{
                 />
             </Table.Cell>
             <Table.Cell>
-              <Button color='red' icon="delete" onClick={()=>{this.removeOffer(item.id).then(()=>this.forceUpdate())}}/>
+              <Button color='red' icon="delete" onClick={()=>{this.removeOffer(item.id).then((response)=>{
+                   this.setState({stateUpToggle: !this.state.stateUpToggle})
+                   console.log(this.state.stateUpToggle)
+                 })}}/>
             </Table.Cell>
           </Table.Row>
               )})}
@@ -128,7 +132,7 @@ class MyOffers extends Component{
                               <p><strong>Email: </strong>{item.useremail}</p>
                             </div>}
                     />
-                  <Button color='red' icon="delete" onClick={()=>{this.removeOffer(item.id).then(()=>this.forceUpdate())}}/>
+                  <Button color='red' icon="delete" onClick={()=>{this.removeOffer(item.id).then((response)=> this.setState({stateUpToggle: !this.state.stateUpToggle}))}}/>
                 </Card.Content>
               </Card>
             )})}

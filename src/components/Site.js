@@ -45,6 +45,9 @@ s
           <Menu.Item header onClick={()=>browserHistory.push('/home')}>
             CAN<span className="orange">J</span>E
           </Menu.Item>
+          <Menu.Item header onClick={()=>browserHistory.push('/profile/addItem')} className="hideToggle">
+            Add Item
+          </Menu.Item>
           <Menu.Item name='aboutUs' active={activeItem === 'aboutUs'} onClick={(this.handleItemClick)} content="About" className="hideToggle">
           </Menu.Item>
           <Menu.Item >
